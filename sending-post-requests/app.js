@@ -29,7 +29,9 @@ app.use((error, req, res, next) => {
     res.status(status).json({message: message});
 });
 
-mongoose.connect('mongodb+srv://rohit_kumawat:cunltC77NOGz1jqS@ecommerce-rs4wl.mongodb.net/messages')
+mongoose.connect(
+    'mongodb+srv://rk:9pnwE86CrIBYXaWH@ecommerce-rs4wl.mongodb.net/messages?retryWrites=true'
+)
     .then(result => {
         app.listen(8080);
     })
