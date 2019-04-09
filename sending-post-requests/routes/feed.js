@@ -10,7 +10,7 @@ router.get('/posts', isAuth, feedController.getPosts);
 
 // POST /feed/post
 router.post(
-    '/post', isAuth,
+    '/post',
     [
         body('title')
             .trim()
@@ -18,7 +18,7 @@ router.post(
         body('content')
             .trim()
             .isLength({ min: 5 })
-    ],
+    ],isAuth,
     feedController.createPost
 );
 

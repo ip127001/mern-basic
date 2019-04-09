@@ -129,7 +129,9 @@ class Feed extends Component {
     fetch(url, {
       method: method,
       body: formData,
-      Authorization: 'Bearer ' + this.props.token 
+      headers: {
+        Authorization: 'Bearer ' + this.props.token 
+      }
     })
       .then(res => {
         if (res.status !== 200 && res.status !== 201) {
