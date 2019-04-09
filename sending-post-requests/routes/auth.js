@@ -9,9 +9,9 @@ const router = express.Router();
 router.put('/signup', [
     body('email')
         .isEmail()
-        .withMessage('please enter a valid email')
-        .custom((value, { req }) => {  
-            return User.findOne({email: value}).then(userDOc => {
+        .withMessage('please enter a valid email addres')
+        .custom((value, { req }) => {
+            return User.findOne({email: value}).then(userDoc => {
                 if (userDoc) {
                     return Promise.reject('email address already exists');
                 }
@@ -21,9 +21,8 @@ router.put('/signup', [
     body('password')
         .trim()
         .isLength({min: 5}),
-    body('password')
+    body('name')
         .trim()
-        .isEmpty()
 ], authController.signup);
 
 module.exports = router;

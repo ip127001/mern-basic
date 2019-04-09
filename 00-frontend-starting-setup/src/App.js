@@ -113,14 +113,15 @@ class App extends Component {
       })
     })
       .then(res => {
+        console.log('response in app.js of frontend', res);
         if (res.status === 422) {
           throw new Error(
-            "Validation failed. Make sure the email address isn't used yet!"
+            "Validation failed, make sure that your email id isn't used yet"
           );
         }
         if (res.status !== 200 && res.status !== 201) {
           console.log('Error!');
-          throw new Error('Creating a user failed!');
+          throw new Error("creating a user failed");
         }
         return res.json();
       })
